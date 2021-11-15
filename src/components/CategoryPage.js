@@ -37,7 +37,7 @@ export default function CategoryPage() {
     }
 
     fetchBooks();
-  });
+  }, []);
 
   return (
     <div className={classes.root}>
