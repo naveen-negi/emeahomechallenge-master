@@ -14,6 +14,9 @@ import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../actions';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: theme.spacing(2),
+  },
   productDetailTable: {
     borderWidth: 'thin',
     borderColor: 'black',
@@ -38,7 +41,7 @@ function ProductDetailPage() {
   }
 
   return (
-    <Grid item xs={8}>
+    <Grid item xs={8} className={classes.root}>
       <Table
         aria-label="product details"
         className={classes.productDetailTable}
