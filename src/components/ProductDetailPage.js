@@ -1,41 +1,37 @@
 import React from 'react';
 import { bookType } from '../types';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
-import { Link, useLocation } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { useLocation } from 'react-router-dom';
 import {
+  Button,
+  Grid,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableRow,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-const cardStyles = makeStyles({
-  root: {
-    minWidth: '50%',
-    marginBottom: 8,
+const useStyles = makeStyles(theme => ({
+  productDetailTable: {
+    borderWidth: 'thin',
+    borderColor: 'black',
+    borderStyle: 'solid',
   },
-  title: {
-    fontSize: 14,
+  addToCartButton: {
+    marginRight: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    color: 'primary',
   },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
+}));
 function ProductDetailPage() {
   const location = useLocation();
   const { book } = location.state;
-  console.log('book: ' + JSON.stringify(location.state));
-  const classes = cardStyles();
+
+  const classes = useStyles();
 
   return (
-    <TableContainer>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Grid item xs={8}>
+      <Table aria-label="product details" className={classes.productDetailTable}>
         <TableBody>
           <TableRow key={book.Title}>
             <TableCell component="th" scope="row">
@@ -75,7 +71,14 @@ function ProductDetailPage() {
           </TableRow>
         </TableBody>
       </Table>
-    </TableContainer>
+      <Button
+        variant="contained"
+        className={classes.addToCartButton}
+        color="primary"
+      >
+        Add to cart
+      </Button>
+    </Grid>
   );
 }
 
