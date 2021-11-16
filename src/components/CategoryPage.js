@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import BookCard from './BookCard';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchAllBooks} from "../actions";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,17 +29,13 @@ const useStyles = makeStyles(theme => ({
 export default function CategoryPage() {
   const classes = useStyles();
 
-  const [books, setBooks] = useState([]);
+  const books = useSelector(state => state.data.books);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    function fetchBooks() {
-      fetch('http://localhost:3000/api/books')
-        .then(res => res.json())
-        .then(booksObj => setBooks(booksObj));
-    }
-
-    fetchBooks();
-  }, []);
+    dispatch(fetchAllBooks());
+  }, [dispatch]);
 
   return (
     <div className={classes.root}>

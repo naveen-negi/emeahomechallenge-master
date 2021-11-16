@@ -10,3 +10,7 @@ export const bookType = shape({
 });
 
 export const booksType = arrayOf(bookType);
+
+export const CartType = shape({
+  books: booksType,
+});
