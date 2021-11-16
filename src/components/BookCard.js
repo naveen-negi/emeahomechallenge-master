@@ -47,7 +47,11 @@ function BookCard(props) {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link size="small" to="/productDetails" book={book}>
+              <Link
+                size="small"
+                to= '/productDetails'
+                state = {{book: book}}
+              >
                 Book in detail
               </Link>
             </CardActions>
