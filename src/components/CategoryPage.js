@@ -56,7 +56,7 @@ export default function CategoryPage() {
         </Toolbar>
       </AppBar>
       <main className={classes.content}>
-        <BookCard books={books} />
+        <BookCard books={books}/>
       </main>
     </div>
   );

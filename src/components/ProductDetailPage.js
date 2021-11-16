@@ -10,6 +10,8 @@ import {
   TableRow,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { addToCartAction } from '../actions';
 
 const useStyles = makeStyles(theme => ({
   productDetailTable: {
@@ -29,9 +31,18 @@ function ProductDetailPage() {
 
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
+  function addProductToCart() {
+    dispatch(addToCartAction(book));
+  }
+
   return (
     <Grid item xs={8}>
-      <Table aria-label="product details" className={classes.productDetailTable}>
+      <Table
+        aria-label="product details"
+        className={classes.productDetailTable}
+      >
         <TableBody>
           <TableRow key={book.Title}>
             <TableCell component="th" scope="row">
@@ -75,6 +86,7 @@ function ProductDetailPage() {
         variant="contained"
         className={classes.addToCartButton}
         color="primary"
+        onClick={addProductToCart}
       >
         Add to cart
       </Button>
