@@ -6,6 +6,13 @@ import CardActions from '@material-ui/core/CardActions';
 import React from 'react';
 import { booksType } from '../types';
 import { Link } from 'react-router-dom';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+} from '@material-ui/core';
 
 const cardStyles = makeStyles({
   root: {
