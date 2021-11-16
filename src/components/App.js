@@ -1,14 +1,16 @@
 import React from 'react';
-import CategoryPage from 'src/components/CategoryPage';
-import { Route, Router } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CategoryPage from './CategoryPage';
+import ProductDetailPage from './ProductDetailPage';
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Route path="/" exact component={CategoryPage} />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<CategoryPage />} />
+        <Route path="productDetails" element={<ProductDetailPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 export default function CategoryPage() {
   const classes = useStyles();
 
-  const [books, setBooks] = useState({});
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
     function fetchBooks() {

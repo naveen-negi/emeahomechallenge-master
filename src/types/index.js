@@ -1,8 +1,9 @@
-import PropTypes, { shape, arrayOf } from 'prop-types';
+import { shape, arrayOf, string } from 'prop-types';
 
 export const bookType = shape({
-  Title: PropTypes.string,
-  Author: PropTypes.string,
+  Title: string,
+  Author: string,
+  Height: string,
 });
 
 export const booksType = arrayOf(bookType);
