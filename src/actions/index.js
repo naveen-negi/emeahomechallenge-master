@@ -9,3 +9,8 @@ export const fetchAllBooks = () => async dispatch => {
 export const addToCartAction = (book) => dispatch => {
   dispatch({ type: 'ADD_TO_CART', payload: book });
 };
+
+
+export const removefromCart = (book) => dispatch => {
+  dispatch({ type: 'REMOVE_FROM_CART', payload: book });
+};

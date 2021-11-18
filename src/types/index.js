@@ -10,19 +10,13 @@ export const bookType = shape({
 });
 
 export const booksType = arrayOf(bookType);
-
-export const CartType = shape({
-  books: booksType,
+export const cartItem = shape({
+  book: bookType,
+  quantity: number,
 });
 
+export const cartItemsType = arrayOf(cartItem);
 
-export const cartItemType = {
-  id: number.isRequired,
-  name: string.isRequired,
-  price: number.isRequired,
-  img: string.isRequired,
-  count: number.isRequired,
-  stockCount: number.isRequired,
-};
-
-
+export const CartType = shape({
+  cartItems: cartItemsType,
+});
