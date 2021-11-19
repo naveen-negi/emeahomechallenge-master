@@ -1,14 +1,12 @@
 import React from 'react';
 import { bookType } from '../types';
 import { useLocation } from 'react-router-dom';
-import {
-  Button,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from '@material-ui/core';
+import TableBody from 'react-router-dom';
+import Table from '@material-ui/core';
+import Grid from '@material-ui/core';
+import Button from '@material-ui/core';
+import TableCell from '@material-ui/core';
+import TableRow from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../actions';

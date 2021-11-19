@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { booksType, bookType } from '../types';
-import { Link, useLocation } from 'react-router-dom';
-import {
-  Button,
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core';
+import TableRow from '@material-ui/core';
+import Divider from '@material-ui/core';
+import Table from '@material-ui/core';
+import TableBody from '@material-ui/core';
+import TableCell from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCartAction, fetchAllBooks, removefromCart } from '../actions';
-import ProductDetailPage from './ProductDetailPage';
+import { removefromCart } from '../actions';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
@@ -70,37 +62,35 @@ function Cart() {
         </div>
         <Table className={classes.cartTable}>
           <TableBody>
-            {cart
-
-              .map(cartItem => (
-                <TableRow
-                  key={
-                    cartItem.book.Title +
-                    cartItem.book.Author +
-                    cartItem.book.Height
-                  }
-                >
-                  <TableCell>
-                    <Link
-                      size="small"
-                      to="/productDetails"
-                      state={{ book: cartItem.book }}
-                    >
-                      {cartItem.book.Title}
-                    </Link>
-                  </TableCell>
-                  <TableCell> Quantity: {cartItem.quantity}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="contained"
-                      className={classes.checkOutButton}
-                      onClick={() => removeCartItem(cartItem.book)}
-                    >
-                      Remove
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
+            {cart.map(cartItem => (
+              <TableRow
+                key={
+                  cartItem.book.Title +
+                  cartItem.book.Author +
+                  cartItem.book.Height
+                }
+              >
+                <TableCell>
+                  <Link
+                    size="small"
+                    to="/productDetails"
+                    state={{ book: cartItem.book }}
+                  >
+                    {cartItem.book.Title}
+                  </Link>
+                </TableCell>
+                <TableCell> Quantity: {cartItem.quantity}</TableCell>
+                <TableCell>
+                  <Button
+                    variant="contained"
+                    className={classes.checkOutButton}
+                    onClick={() => removeCartItem(cartItem.book)}
+                  >
+                    Remove
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
         <Button

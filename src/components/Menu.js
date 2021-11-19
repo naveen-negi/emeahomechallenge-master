@@ -6,7 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,11 +33,15 @@ export default function Menu() {
         >
           <MenuIcon />
         </IconButton>
-        <Button component={Link} to="/" color="inherit" className={classes.title}>
-          <Typography variant="h6">
-            Book Shop
-          </Typography>
-          </Button>
+        <Button
+          data-testid="menu-btn"
+          component={Link}
+          to="/"
+          color="inherit"
+          className={classes.title}
+        >
+          <Typography variant="h6">Book Shop</Typography>
+        </Button>
         <Button color="inherit">Cart</Button>
       </Toolbar>
     </AppBar>

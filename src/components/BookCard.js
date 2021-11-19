@@ -37,7 +37,7 @@ function BookCard(props) {
         const book = books[bookIndex];
 
         return (
-          <Card
+          <Card data-testid="book-summary"
             key={book.Title + book.Author + book.Height}
             className={classes.root}
           >

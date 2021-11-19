@@ -3,17 +3,38 @@
   "version": "1.0.0",
   "description": "Experimental App",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "REACT_APP_HOST_URL=http://localhost:5500 jest --env=jsdom --no-cache",
     "start": "parcel ./src/index.html",
     "bootServer": "node ./server/index.js",
     "build": "parcel build ./src/index.html",
     "lint": "eslint './**/*.js' --fix"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "testEnvironment": "node",
+    "setupFiles": [
+      "jest-prop-type-error"
+    ],
+    "setupFilesAfterEnv": ["<rootDir>/jest-setup.js"],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts|test/e2e-tests)[/\\\\]"
+    ],
+    "testRegex": "\\.(test|it)\\.jsx?$",
+    "testURL": "http://localhost:5500",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@material-ui).+(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "proprietary",
   "dependencies": {
-    "@material-ui/core": "^4.0.0",
     "@material-ui/icons": "^4.9.1",
     "@types/react": "^16.8.6",
     "axios": "^0.24.0",
@@ -33,12 +54,18 @@
     "src": "^1.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-0",
+    "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.8.3",
+    "@material-ui/core": "^4.12.3",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^27.3.1",
     "babel-plugin-import": "^1.13.0",
+    "babel-register": "^6.26.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-recommended": "^4.0.0",
@@ -47,8 +74,13 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "jest": "^27.3.1",
+    "jest-prop-type-error": "^1.1.0",
+    "nock": "^13.2.1",
     "parcel-bundler": "^1.12.4",
-    "prettier": "1.19.1"
+    "prettier": "1.19.1",
+    "redux-mock-store": "^1.5.4",
+    "wait-for-expect": "^3.0.2"
   },
   "browserslist": [
     "last 2 Chrome versions"
