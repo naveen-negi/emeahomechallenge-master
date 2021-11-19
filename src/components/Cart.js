@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { removefromCart } from '../actions';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Cart() {
-  const cart = useSelector(state => state.data.cart);
+  const cart = withPropsValidation(useSelector(state => state.data.cart));
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -120,7 +121,12 @@ function Cart() {
   }
 }
 
-Cart.propTypes = {
+const withPropsValidation = props => {
+  PropTypes.checkPropTypes(propTypes, props, 'prop', 'ProductDetailPage');
+  return props;
+};
+
+const propTypes = {
   books: booksType,
   book: bookType,
 };

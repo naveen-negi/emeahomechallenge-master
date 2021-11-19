@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../actions';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 }));
 function ProductDetailPage() {
   const location = useLocation();
-  const { book } = location.state;
+  const { book } = withPropsValidation(location.state);
 
   const classes = useStyles();
 
@@ -97,7 +98,12 @@ function ProductDetailPage() {
   );
 }
 
-ProductDetailPage.propTypes = {
+const withPropsValidation = props => {
+  PropTypes.checkPropTypes(propTypes, props, 'prop', 'ProductDetailPage');
+  return props;
+};
+
+const propTypes = {
   book: bookType,
 };
 

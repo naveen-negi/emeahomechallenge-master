@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import BookCard from './BookCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllBooks } from '../actions';
+import { booksType, bookType } from '../types';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function CategoryPage() {
   const classes = useStyles();
-  const books = useSelector(state => state.data.books);
+  const { books } = withPropsValidation(useSelector(state => state.data));
 
   const dispatch = useDispatch();
 
@@ -43,3 +39,11 @@ export default function CategoryPage() {
     </div>
   );
 }
+const withPropsValidation = props => {
+  PropTypes.checkPropTypes(propTypes, props, 'prop', 'CategoryPage');
+  return props;
+};
+
+const propTypes = {
+  books: booksType,
+};
