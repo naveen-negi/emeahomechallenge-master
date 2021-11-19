@@ -5,5 +5,10 @@ const url = relativePath => {
 };
 
 export const fetchBooks = () => {
-  return axios.get(url('api/books'));
+  return axios.get(url('api/books')).catch(function(error) {
+    if (error.response) {
+      console.log(error);
+      [];
+    }
+  });
 };

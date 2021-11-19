@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  queryByText,
   render,
   screen,
-  waitForElementToBeRemoved,
 } from '@testing-library/react';
 import App from '../src/components/App';
 import httpMock from './httpMock';
