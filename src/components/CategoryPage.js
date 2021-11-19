@@ -24,9 +24,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
 }));
+
 export default function CategoryPage() {
   const classes = useStyles();
-
   const books = useSelector(state => state.data.books);
 
   const dispatch = useDispatch();

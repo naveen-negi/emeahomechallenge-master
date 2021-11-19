@@ -17,18 +17,26 @@
     "setupFiles": [
       "jest-prop-type-error"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/jest-setup.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.js"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts|test/e2e-tests)[/\\\\]"
     ],
     "testRegex": "\\.(test|it)\\.jsx?$",
     "testURL": "http://localhost:5500",
     "transformIgnorePatterns": [
-      "/node_modules/(?!@material-ui).+(js|jsx)$"
+      "<rootDir>/node_modules/(?!@material-ui/core)",
+      "<rootDir>/node_modules/(?!@material-ui/core/Grid.d.ts)",
+      "<rootDir>/node_modules/(?!@babel/runtime)"
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.(ts|tsx)?$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
     }
   },
   "keywords": [],
@@ -60,8 +68,10 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.8.3",
     "@material-ui/core": "^4.12.3",
+    "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^27.3.1",
     "babel-plugin-import": "^1.13.0",
@@ -80,6 +90,7 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "1.19.1",
     "redux-mock-store": "^1.5.4",
+    "ts-jest": "^27.0.7",
     "wait-for-expect": "^3.0.2"
   },
   "browserslist": [
