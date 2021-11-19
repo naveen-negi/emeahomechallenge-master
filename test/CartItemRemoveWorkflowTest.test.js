@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {
+  queryByText,
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import App from '../src/components/App';
 import httpMock from './httpMock';
 import { Provider } from 'react-redux';
@@ -11,24 +16,7 @@ import userEvent from '@testing-library/user-event';
 const enhancer = compose(applyMiddleware(thunk));
 const store = createStore(reducers, enhancer);
 
-test('category page is rendered with all books', async () => {
-  httpMock().setupMocks();
-
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-
-  const menuBtn = screen.getByTestId('menu-btn');
-  expect(menuBtn).toBeInTheDocument();
-  await new Promise(r => setTimeout(r, 1000));
-
-  const bookCards = await screen.getAllByText('Book in detail');
-  expect(bookCards).toHaveLength(6);
-});
-
-test('Click on book-in-details link should navigate to product detail page', async () => {
+test('should remove items from cart and display empty cart page', async () => {
   httpMock().setupMocks();
 
   render(
@@ -47,4 +35,15 @@ test('Click on book-in-details link should navigate to product detail page', asy
 
   const addToCartBtn = screen.getByTestId('add-to-cart-btn');
   expect(addToCartBtn).toBeInTheDocument();
+  userEvent.click(addToCartBtn);
+
+  const cartBtn = screen.getByTestId('cart-btn');
+  expect(cartBtn).toBeInTheDocument();
+  userEvent.click(cartBtn);
+
+  const removeBtn = screen.getByRole('button', { name: /remove/i });
+  userEvent.click(removeBtn);
+
+  const emptyCart = screen.getByTestId('empty-cart');
+  expect(emptyCart).toBeInTheDocument();
 });

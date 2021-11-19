@@ -1,12 +1,12 @@
 import React from 'react';
 import { booksType, bookType } from '../types';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core';
-import TableRow from '@material-ui/core';
-import Divider from '@material-ui/core';
-import Table from '@material-ui/core';
-import TableBody from '@material-ui/core';
-import TableCell from '@material-ui/core';
+import TableBody from '@material-ui/core/TableBody';
+import Table from '@material-ui/core/Table';
+import Button from '@material-ui/core/Button';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { removefromCart } from '../actions';
@@ -79,9 +79,15 @@ function Cart() {
                     {cartItem.book.Title}
                   </Link>
                 </TableCell>
-                <TableCell> Quantity: {cartItem.quantity}</TableCell>
+                <TableCell>
+                  <label>Quantity: </label>
+                  <Typography variant="h6">{cartItem.quantity}</Typography>
+                </TableCell>
                 <TableCell>
                   <Button
+                      role="button"
+                      aria-label='remove'
+                    data-testid="checkout-btn"
                     variant="contained"
                     className={classes.checkOutButton}
                     onClick={() => removeCartItem(cartItem.book)}
@@ -104,7 +110,7 @@ function Cart() {
     );
   } else {
     return (
-      <div className={classes.emptyCart}>
+      <div data-testid="empty-cart" className={classes.emptyCart}>
         <Divider />
         <div className={classes.emptyCartHeader}>
           <Typography variant="h6">Your cart is empty</Typography>

@@ -4,7 +4,6 @@ import produce from 'immer';
 const bookShopReducer = produce((draft = { books: [], cart: [] }, action) => {
   switch (action.type) {
     case 'LOAD_ALL_BOOKS':
-      console.log("reducers: " + action.payload);
       return { ...draft, books: action.payload };
     case 'ADD_TO_CART': {
       const duplicateCartItem = draft.cart.find(

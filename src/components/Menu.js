@@ -12,8 +12,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  title: {
-    flexGrow: 1,
+  menuItems: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    width: '100%',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -33,16 +36,24 @@ export default function Menu() {
         >
           <MenuIcon />
         </IconButton>
-        <Button
-          data-testid="menu-btn"
-          component={Link}
-          to="/"
-          color="inherit"
-          className={classes.title}
-        >
-          <Typography variant="h6">Book Shop</Typography>
-        </Button>
-        <Button color="inherit">Cart</Button>
+        <div className={classes.menuItems}>
+          <Button
+            data-testid="menu-btn"
+            component={Link}
+            to="/"
+            color="inherit"
+          >
+            <Typography variant="h6">Book Shop</Typography>
+          </Button>
+          <Button className={classes.cartBtn}
+            data-testid="cart-btn"
+            component={Link}
+            to="/cart"
+            color="inherit"
+          >
+            <Typography variant="h6">Cart</Typography>
+          </Button>
+        </div>
       </Toolbar>
     </AppBar>
   );

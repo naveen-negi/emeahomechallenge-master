@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Experimental App",
   "scripts": {
-    "test": "REACT_APP_HOST_URL=http://localhost:5500 jest --env=jsdom --no-cache",
+    "test": "REACT_APP_HOST_URL=http://localhost:5500 jest --env=jsdom --runInBand",
     "start": "parcel ./src/index.html",
     "bootServer": "node ./server/index.js",
     "build": "parcel build ./src/index.html",

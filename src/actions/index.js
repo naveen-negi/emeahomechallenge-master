@@ -2,7 +2,6 @@ import { fetchBooks } from '../api/books';
 
 export const fetchAllBooks = () => async dispatch => {
   const books = await fetchBooks();
-  console.log("api books 2: " + JSON.stringify(books));
   dispatch({ type: 'LOAD_ALL_BOOKS', payload: books.data });
 };
 
