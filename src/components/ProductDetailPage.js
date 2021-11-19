@@ -36,6 +36,7 @@ function ProductDetailPage() {
 
   function addProductToCart() {
     dispatch(addToCartAction(book));
+    history.back();
   }
 
   return (
@@ -83,7 +84,8 @@ function ProductDetailPage() {
           </TableRow>
         </TableBody>
       </Table>
-      <Button data-testid="add-to-cart-btn"
+      <Button
+        data-testid="add-to-cart-btn"
         variant="contained"
         className={classes.addToCartButton}
         color="primary"

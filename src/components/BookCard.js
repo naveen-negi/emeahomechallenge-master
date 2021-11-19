@@ -6,13 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import React from 'react';
 import { booksType } from '../types';
 import { Link } from 'react-router-dom';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 const cardStyles = makeStyles({
   root: {
@@ -37,7 +31,8 @@ function BookCard(props) {
         const book = books[bookIndex];
 
         return (
-          <Card data-testid="book-summary"
+          <Card
+            data-testid="book-summary"
             key={book.Title + book.Author + book.Height}
             className={classes.root}
           >
@@ -54,13 +49,14 @@ function BookCard(props) {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link
+              <Button
+                component={Link}
                 size="small"
-                to= '/productDetails'
-                state = {{book: book}}
+                to="/productDetails"
+                state={{ book: book }}
               >
                 Book in detail
-              </Link>
+              </Button>
             </CardActions>
           </Card>
         );

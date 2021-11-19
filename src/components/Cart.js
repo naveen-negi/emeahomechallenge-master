@@ -80,13 +80,12 @@ function Cart() {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <label>Quantity: </label>
-                  <Typography variant="h6">{cartItem.quantity}</Typography>
+                  <label>Quantity: {cartItem.quantity}</label>
                 </TableCell>
                 <TableCell>
                   <Button
-                      role="button"
-                      aria-label='remove'
+                    role="button"
+                    aria-label="remove"
                     data-testid="checkout-btn"
                     variant="contained"
                     className={classes.checkOutButton}
